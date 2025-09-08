@@ -1,0 +1,76 @@
+---
+- name: Ensure required packages are installed
+  yum:
+    name:
+      - nftables
+      - ipset
+      - dnsmasq
+    state: present
+
+- name: Deploy nftables.conf template
+  template:
+    src: nftables.conf.j2
+    dest: /etc/nftables.conf
+    mode: 0644
+
+- name: Enable and start nftables
+  systemd:
+    name: nftables
+    enabled: true
+    state: started
+
+- name: Deploy dnsmasq for dynamic DNS resolution
+  template:
+    src: dnsmasq.conf.j2
+    dest: /etc/dnsmasq.d/dnsmasq.conf
+    mode: 0644
+
+- name: Enable and start dnsmasq
+  systemd:
+    name: dnsmasq
+    enabled: true
+    state: started
+
+- name: Setup systemd timer for hourly ipset refresh
+  copy:
+    dest: /etc/systemd/system/ipset-refresh.service
+    content: |
+      [Unit]
+      Description=Refresh nftables DNS ipsets
+
+      [Service]
+      Type=oneshot
+      ExecStart=/usr/local/bin/refresh_ipset.sh
+
+  copy:
+    dest: /etc/systemd/system/ipset-refresh.timer
+    content: |
+      [Unit]
+      Description=Run nftables ipset refresh hourly
+
+      [Timer]
+      OnCalendar=hourly
+      Persistent=true
+
+      [Install]
+      WantedBy=timers.target
+
+- name: Deploy refresh script
+  copy:
+    dest: /usr/local/bin/refresh_ipset.sh
+    mode: 0755
+    content: |
+      #!/bin/bash
+      source /etc/ansible/facts.d/egress.fact
+      for domain in ${allowed_domains[@]}; do
+        ipset flush allowed_ips
+        for ip in $(dig +short $domain); do
+          ipset add allowed_ips $ip
+        done
+      done
+
+- name: Enable ipset refresh timer
+  systemd:
+    name: ipset-refresh.timer
+    enabled: true
+    state: started

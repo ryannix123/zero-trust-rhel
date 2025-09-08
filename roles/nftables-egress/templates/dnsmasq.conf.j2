@@ -1,0 +1,5 @@
+# dnsmasq config for dynamic DNS to ipset
+ipset=/{{ item }}/allowed_ips
+{% for domain in allowed_domains %}
+ipset=/{{ domain }}/allowed_ips
+{% endfor %}

@@ -1,0 +1,9 @@
+---
+enable_disk_encryption: false
+
+clevis_tang_servers:
+  - http://tang1.mycompany.internal
+  - http://tang2.mycompany.internal
+
+encrypted_mounts:
+  - { device: /dev/vdb, mount: /secure_data, fstype: xfs }

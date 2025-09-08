@@ -1,0 +1,5 @@
+---
+allowed_domains:
+  - repo.redhat.com
+  - updates.redhat.com
+  - mycompany.internal

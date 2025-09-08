@@ -1,0 +1,14 @@
+---
+- name: Zero Trust Baseline with OpenSCAP, nftables, logging, and optional disk encryption
+  hosts: all
+  become: true
+
+  vars_files:
+    - vars/egress.yml
+    - vars/disk-encryption.yml
+
+  roles:
+    - openscap
+    - nftables-egress
+    - logging
+    - { role: disk-encryption, when: enable_disk_encryption | default(false) }

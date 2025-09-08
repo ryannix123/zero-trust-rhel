@@ -1,0 +1,26 @@
+table inet filter {
+  set allowed_ips {
+    type ipv4_addr
+    flags interval
+  }
+
+  chain input {
+    type filter hook input priority 0;
+    policy drop;
+    iif "lo" accept
+    ct state established,related accept
+    log prefix "NFT IN DENIED: " flags all counter drop
+  }
+
+  chain forward {
+    type filter hook forward priority 0;
+    policy drop;
+  }
+
+  chain output {
+    type filter hook output priority 0;
+    policy drop;
+    ip daddr @allowed_ips accept
+    log prefix "NFT OUT DENIED: " flags all counter drop
+  }
+}

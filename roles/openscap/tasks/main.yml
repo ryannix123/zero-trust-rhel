@@ -1,0 +1,6 @@
+---
+- name: Run OpenSCAP compliance scan
+  command: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_standard            --results /var/log/oscap-results.xml            --report /var/log/oscap-report.html            /usr/share/xml/scap/ssg/content/ssg-rhel9-ds.xml
+
+- name: Apply OpenSCAP remediations
+  command: oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_standard            /usr/share/xml/scap/ssg/content/ssg-rhel9-ds.xml

@@ -1,0 +1,25 @@
+---
+- name: Configure rsyslog to log nftables denied packets
+  lineinfile:
+    path: /etc/rsyslog.d/nftables.conf
+    line: ':msg, contains, "NFT" /var/log/nftables.log'
+
+- name: Uncomment to enable journald forwarding
+  lineinfile:
+    path: /etc/rsyslog.d/nftables.conf
+    line: '#*.* @@127.0.0.1:514'
+
+- name: Uncomment to enable Splunk forwarding
+  lineinfile:
+    path: /etc/rsyslog.d/nftables.conf
+    line: '#*.* @@splunk.mycompany.internal:514'
+
+- name: Uncomment to enable Elastic forwarding
+  lineinfile:
+    path: /etc/rsyslog.d/nftables.conf
+    line: '#*.* @@elastic.mycompany.internal:514'
+
+- name: Restart rsyslog
+  systemd:
+    name: rsyslog
+    state: restarted

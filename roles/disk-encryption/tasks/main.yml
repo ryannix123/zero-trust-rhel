@@ -1,0 +1,27 @@
+---
+- name: Install clevis and tang
+  yum:
+    name:
+      - clevis
+      - clevis-luks
+      - tang
+    state: present
+
+- name: Encrypt target devices
+  command: >
+    clevis luks bind -d {{ item.device }} tang '{"url":"{{ clevis_tang_servers[0] }}"}'
+  loop: "{{ encrypted_mounts }}"
+
+- name: Ensure encrypted mount points exist
+  file:
+    path: "{{ item.mount }}"
+    state: directory
+  loop: "{{ encrypted_mounts }}"
+
+- name: Mount encrypted filesystems
+  mount:
+    path: "{{ item.mount }}"
+    src: "{{ item.device }}"
+    fstype: "{{ item.fstype }}"
+    state: mounted
+  loop: "{{ encrypted_mounts }}"
