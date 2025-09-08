@@ -8,7 +8,7 @@ This repository demonstrates how to implement a comprehensive zero-trust securit
 
 Zero-trust is a security framework that operates on the principle **"never trust, always verify."** Unlike traditional security models that establish a trusted perimeter and assume everything inside is safe, zero-trust treats every user, device, application, and network flow as potentially compromised.
 
-[Zero-Trust RHEL Architecture](./images/diagram.svg)
+![Zero-Trust RHEL Architecture](/images/diagram.svg)
 
 ### Core Zero-Trust Principles
 
