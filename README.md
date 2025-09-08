@@ -360,11 +360,7 @@ ansible-playbook -i inventory/hosts site.yml
 - [Red Hat Developer](https://developers.redhat.com/)
 
 ### Contributing
-Contributions are welcome! Please read our contributing guidelines and submit pull requests for improvements, bug fixes, or new features.
-
-## License
-
-This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
+Contributions are welcome! Feel free to send me a pull request!
 
 ## Disclaimer
 
