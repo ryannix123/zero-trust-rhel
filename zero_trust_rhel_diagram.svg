@@ -1,0 +1,501 @@
+<svg viewBox="0 0 1400 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="redhatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#AA0000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="securityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D63031;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0984E3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2D3436;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="monitorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00B894;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00A085;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Drop Shadow Filter -->
+    <filter id="dropshadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="3" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Arrow Marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2D3436" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="1000" fill="#F8F9FA"/>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2D3436">
+    Zero-Trust Red Hat Enterprise Linux System Architecture
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="700" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#636E72">
+    Automated Configuration via Ansible Playbooks
+  </text>
+
+  <!-- Zero Trust Boundary -->
+  <rect x="50" y="80" width="1300" height="900" fill="none" stroke="#E17055" stroke-width="3" stroke-dasharray="10,5" opacity="0.7"/>
+  <text x="60" y="100" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#E17055">ZERO TRUST BOUNDARY</text>
+
+  <!-- Identity & Access Management Layer -->
+  <g transform="translate(70,120)">
+    <rect width="300" height="120" fill="url(#securityGradient)" rx="10" filter="url(#dropshadow)"/>
+    <text x="150" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+      Identity &amp; Access Management
+    </text>
+    
+    <!-- IAM Components -->
+    <g transform="translate(20,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">SSSD</text>
+    </g>
+    <g transform="translate(110,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Kerberos</text>
+    </g>
+    <g transform="translate(200,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">LDAP</text>
+    </g>
+    
+    <g transform="translate(20,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">PAM</text>
+    </g>
+    <g transform="translate(110,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">2FA/MFA</text>
+    </g>
+    <g transform="translate(200,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">sudo Rules</text>
+    </g>
+  </g>
+
+  <!-- Network Security Layer -->
+  <g transform="translate(400,120)">
+    <rect width="300" height="120" fill="url(#networkGradient)" rx="10" filter="url(#dropshadow)"/>
+    <text x="150" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+      Network Security &amp; Segmentation
+    </text>
+    
+    <!-- Network Components -->
+    <g transform="translate(20,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">firewalld</text>
+    </g>
+    <g transform="translate(110,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">iptables</text>
+    </g>
+    <g transform="translate(200,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">SELinux</text>
+    </g>
+    
+    <g transform="translate(20,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">VPN</text>
+    </g>
+    <g transform="translate(110,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">TLS 1.3</text>
+    </g>
+    <g transform="translate(200,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Network ACL</text>
+    </g>
+  </g>
+
+  <!-- Monitoring & Logging Layer -->
+  <g transform="translate(730,120)">
+    <rect width="300" height="120" fill="url(#monitorGradient)" rx="10" filter="url(#dropshadow)"/>
+    <text x="150" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+      Monitoring &amp; Logging
+    </text>
+    
+    <!-- Monitoring Components -->
+    <g transform="translate(20,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">rsyslog</text>
+    </g>
+    <g transform="translate(110,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">auditd</text>
+    </g>
+    <g transform="translate(200,40)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">AIDE</text>
+    </g>
+    
+    <g transform="translate(20,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">journald</text>
+    </g>
+    <g transform="translate(110,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">SIEM</text>
+    </g>
+    <g transform="translate(200,80)">
+      <rect width="80" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="40" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Metrics</text>
+    </g>
+  </g>
+
+  <!-- Compliance & Hardening Layer -->
+  <g transform="translate(1060,120)">
+    <rect width="270" height="120" fill="url(#securityGradient)" rx="10" filter="url(#dropshadow)"/>
+    <text x="135" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+      Compliance &amp; Hardening
+    </text>
+    
+    <!-- Compliance Components -->
+    <g transform="translate(20,40)">
+      <rect width="70" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">SCAP</text>
+    </g>
+    <g transform="translate(100,40)">
+      <rect width="70" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CIS</text>
+    </g>
+    <g transform="translate(180,40)">
+      <rect width="70" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">STIG</text>
+    </g>
+    
+    <g transform="translate(20,80)">
+      <rect width="70" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">OpenSCAP</text>
+    </g>
+    <g transform="translate(100,80)">
+      <rect width="70" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">FIPS 140-2</text>
+    </g>
+    <g transform="translate(180,80)">
+      <rect width="70" height="30" fill="rgba(255,255,255,0.2)" rx="5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CC</text>
+    </g>
+  </g>
+
+  <!-- Core RHEL System -->
+  <g transform="translate(400,280)">
+    <rect width="600" height="400" fill="url(#redhatGradient)" rx="15" filter="url(#dropshadow)"/>
+    <text x="300" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+      Red Hat Enterprise Linux Core System
+    </text>
+    
+    <!-- OS Layer -->
+    <g transform="translate(20,50)">
+      <rect width="560" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+      <text x="280" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+        Operating System Layer
+      </text>
+      
+      <g transform="translate(20,30)">
+        <rect width="120" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="60" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Kernel</text>
+        <text x="60" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Hardening</text>
+      </g>
+      <g transform="translate(150,30)">
+        <rect width="120" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="60" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">systemd</text>
+        <text x="60" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Security</text>
+      </g>
+      <g transform="translate(280,30)">
+        <rect width="120" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="60" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">File System</text>
+        <text x="60" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Encryption</text>
+      </g>
+      <g transform="translate(410,30)">
+        <rect width="120" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="60" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Process</text>
+        <text x="60" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Isolation</text>
+      </g>
+    </g>
+
+    <!-- Application Security Layer -->
+    <g transform="translate(20,150)">
+      <rect width="560" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+      <text x="280" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+        Application Security Layer
+      </text>
+      
+      <g transform="translate(30,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Container</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Security</text>
+      </g>
+      <g transform="translate(140,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">AppArmor/</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">SELinux</text>
+      </g>
+      <g transform="translate(250,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Service</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Hardening</text>
+      </g>
+      <g transform="translate(360,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Runtime</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Protection</text>
+      </g>
+      <g transform="translate(470,30)">
+        <rect width="80" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="40" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Secrets</text>
+        <text x="40" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Mgmt</text>
+      </g>
+    </g>
+
+    <!-- Data Protection Layer -->
+    <g transform="translate(20,250)">
+      <rect width="560" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+      <text x="280" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+        Data Protection Layer
+      </text>
+      
+      <g transform="translate(40,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">LUKS</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Encryption</text>
+      </g>
+      <g transform="translate(150,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">TPM 2.0</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Key Mgmt</text>
+      </g>
+      <g transform="translate(260,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Backup</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Encryption</text>
+      </g>
+      <g transform="translate(370,30)">
+        <rect width="100" height="35" fill="rgba(255,255,255,0.2)" rx="5"/>
+        <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Data Loss</text>
+        <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Prevention</text>
+      </g>
+    </g>
+
+    <!-- Certificate Management -->
+    <g transform="translate(20,350)">
+      <rect width="270" height="35" fill="rgba(255,255,255,0.15)" rx="5"/>
+      <text x="135" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Certificate Management
+      </text>
+      <text x="135" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+        Red Hat Certificate System / FreeIPA
+      </text>
+    </g>
+
+    <!-- Patch Management -->
+    <g transform="translate(310,350)">
+      <rect width="270" height="35" fill="rgba(255,255,255,0.15)" rx="5"/>
+      <text x="135" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Automated Patch Management
+      </text>
+      <text x="135" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+        dnf-automatic / Red Hat Satellite
+      </text>
+    </g>
+  </g>
+
+  <!-- Ansible Automation Platform -->
+  <g transform="translate(70,720)">
+    <rect width="1260" height="100" fill="#2D3436" rx="10" filter="url(#dropshadow)"/>
+    <text x="630" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+      Ansible Automation Platform - Zero Trust Configuration Management
+    </text>
+    
+    <!-- Ansible Components -->
+    <g transform="translate(50,35)">
+      <rect width="180" height="50" fill="rgba(238,0,0,0.8)" rx="5"/>
+      <text x="90" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Security Playbooks
+      </text>
+      <text x="90" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • User Management • Firewall Rules
+      </text>
+      <text x="90" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • SELinux Policies • SSH Hardening
+      </text>
+    </g>
+    
+    <g transform="translate(250,35)">
+      <rect width="180" height="50" fill="rgba(238,0,0,0.8)" rx="5"/>
+      <text x="90" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Compliance Playbooks
+      </text>
+      <text x="90" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • SCAP Scanning • CIS Benchmarks
+      </text>
+      <text x="90" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • STIG Implementation • Remediation
+      </text>
+    </g>
+    
+    <g transform="translate(450,35)">
+      <rect width="180" height="50" fill="rgba(238,0,0,0.8)" rx="5"/>
+      <text x="90" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Monitoring Playbooks
+      </text>
+      <text x="90" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • Log Configuration • Audit Setup
+      </text>
+      <text x="90" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • AIDE Configuration • SIEM Integration
+      </text>
+    </g>
+    
+    <g transform="translate(650,35)">
+      <rect width="180" height="50" fill="rgba(238,0,0,0.8)" rx="5"/>
+      <text x="90" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Network Playbooks
+      </text>
+      <text x="90" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • firewalld Config • VPN Setup
+      </text>
+      <text x="90" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • TLS Configuration • Network ACLs
+      </text>
+    </g>
+    
+    <g transform="translate(850,35)">
+      <rect width="180" height="50" fill="rgba(238,0,0,0.8)" rx="5"/>
+      <text x="90" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Encryption Playbooks
+      </text>
+      <text x="90" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • LUKS Setup • Certificate Mgmt
+      </text>
+      <text x="90" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • TPM Configuration • Key Rotation
+      </text>
+    </g>
+    
+    <g transform="translate(1050,35)">
+      <rect width="160" height="50" fill="rgba(238,0,0,0.8)" rx="5"/>
+      <text x="80" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">
+        Continuous Validation
+      </text>
+      <text x="80" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • Configuration Drift
+      </text>
+      <text x="80" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">
+        • Compliance Checks
+      </text>
+    </g>
+  </g>
+
+  <!-- External Integrations -->
+  <g transform="translate(70,850)">
+    <rect width="200" height="80" fill="#636E72" rx="8" filter="url(#dropshadow)"/>
+    <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      External Integrations
+    </text>
+    <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • Red Hat Satellite
+    </text>
+    <text x="100" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • Red Hat Insights
+    </text>
+    <text x="100" y="66" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • SIEM Solutions
+    </text>
+  </g>
+
+  <g transform="translate(290,850)">
+    <rect width="200" height="80" fill="#636E72" rx="8" filter="url(#dropshadow)"/>
+    <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      Cloud Integrations
+    </text>
+    <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • AWS Security Hub
+    </text>
+    <text x="100" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • Azure Security Center
+    </text>
+    <text x="100" y="66" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • GCP Security Console
+    </text>
+  </g>
+
+  <g transform="translate(510,850)">
+    <rect width="200" height="80" fill="#636E72" rx="8" filter="url(#dropshadow)"/>
+    <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      DevSecOps Tools
+    </text>
+    <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • GitLab CI/CD
+    </text>
+    <text x="100" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • Jenkins Pipelines
+    </text>
+    <text x="100" y="66" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      • OpenShift Security
+    </text>
+  </g>
+
+  <!-- Policy Enforcement Flows -->
+  <g transform="translate(750,850)">
+    <rect width="580" height="80" fill="#00B894" rx="8" filter="url(#dropshadow)"/>
+    <text x="290" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      Zero Trust Policy Enforcement Flow
+    </text>
+    <text x="290" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      Never Trust → Always Verify → Least Privilege → Continuous Monitoring
+    </text>
+    <text x="290" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">
+      Identity Verification → Device Validation → Application Authorization → Data Protection
+    </text>
+  </g>
+
+  <!-- Connection Lines -->
+  <!-- From Ansible to Core System -->
+  <line x1="700" y1="720" x2="700" y2="680" stroke="#2D3436" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- From Security Layers to Core System -->
+  <line x1="220" y1="240" x2="400" y2="350" stroke="#E17055" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="550" y1="240" x2="550" y2="280" stroke="#0984E3" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="880" y1="240" x2="800" y2="350" stroke="#00B894" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="1195" y1="240" x2="1000" y2="350" stroke="#E17055" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Key -->
+  <g transform="translate(1100,260)">
+    <rect width="250" height="150" fill="rgba(255,255,255,0.9)" rx="8" stroke="#DDD" stroke-width="1"/>
+    <text x="125" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2D3436">
+      Zero Trust Principles
+    </text>
+    
+    <text x="20" y="40" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ Never trust, always verify
+    </text>
+    <text x="20" y="55" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ Principle of least privilege
+    </text>
+    <text x="20" y="70" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ Assume breach mentality
+    </text>
+    <text x="20" y="85" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ Verify explicitly
+    </text>
+    <text x="20" y="100" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ Use least privileged access
+    </text>
+    <text x="20" y="115" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ Continuous monitoring
+    </text>
+    <text x="20" y="130" font-family="Arial, sans-serif" font-size="10" fill="#2D3436">
+      ✓ End-to-end encryption
+    </text>
+  </g>
+</svg>
