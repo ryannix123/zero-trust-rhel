@@ -94,6 +94,7 @@ Zero-trust is a security framework that operates on the principle **"never trust
 - Deploy security policies across thousands of systems simultaneously
 - Ensure consistent hardening across diverse environments
 - Manage complex dependencies and sequencing automatically
+- Centralized lifecycle management through Red Hat Satellite integration
 
 **Cloud and Hybrid Support**
 - Consistent security controls across on-premises and cloud environments
@@ -245,6 +246,7 @@ Zero-trust is a security framework that operates on the principle **"never trust
 - [ ] Deploy basic monitoring and logging
 
 ### Phase 2: Network Security (Weeks 5-8)
+- [ ] Configure perimeter firewall integration
 - [ ] Implement network segmentation
 - [ ] Configure firewall automation
 - [ ] Deploy VPN and encrypted communications
