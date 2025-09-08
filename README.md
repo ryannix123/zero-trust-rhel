@@ -225,6 +225,7 @@ Zero-trust is a security framework that operates on the principle **"never trust
 ### Control Plane
 - **Ansible Control Node**: Centralized automation and orchestration
 - **Red Hat Ansible Automation Platform**: Enterprise-grade automation with RBAC
+- **Optional: Red Hat Satellite**: Satellite can apply Ansible playbooks to RHEL hosts.
 - **Version Control Integration**: GitOps workflows for security policies
 
 ### Target Infrastructure
@@ -237,7 +238,7 @@ Zero-trust is a security framework that operates on the principle **"never trust
 - **Vulnerability Scanners**: OpenSCAP, Nessus, Qualys integration
 - **Certificate Management**: Red Hat Certificate System, HashiCorp Vault
 
-## Implementation Roadmap
+## Practical Implementation Roadmap
 
 ### Phase 1: Foundation (Weeks 1-4)
 - [ ] Install and configure Ansible Automation Platform
@@ -319,7 +320,7 @@ Zero-trust is a security framework that operates on the principle **"never trust
 ## Getting Started
 
 ### Prerequisites
-- Red Hat Enterprise Linux 8 or 9
+- Red Hat Enterprise Linux 8, 9, 10
 - Ansible 2.9 or later (Ansible Automation Platform recommended)
 - Python 3.6 or later
 - Administrative access to target systems
