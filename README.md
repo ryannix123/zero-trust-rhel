@@ -366,3 +366,46 @@ Contributions are welcome! Feel free to send me a pull request!
 ## Disclaimer
 
 This automation framework provides a foundation for implementing zero-trust architecture but should be customized for your specific environment and requirements. Always test configurations in development environments before production deployment. Consult with security professionals for complex implementations and compliance requirements.
+
+## Additional Considerations
+
+### Image-Mode (`bootc`) for Zero Trust Hardening
+
+Traditional package-based lifecycle management leaves room for **configuration drift** and **inconsistent patching**, which attackers exploit. RHEL 9+ introduces **image-mode** with `bootc`, allowing you to manage operating systems like containers: build once, deploy consistently, and roll forward/backward atomically.
+
+#### Why `bootc` Strengthens Zero Trust
+
+- **Immutable Systems**  
+  Hosts are provisioned from prebuilt images, preventing unauthorized changes or "snowflake" servers.  
+
+- **Reduced Attack Surface**  
+  Only the software explicitly included in the image is present — no stray packages or services.  
+
+- **Atomic Updates**  
+  Upgrades are delivered as complete images. If something fails, rollback is instant and predictable.  
+
+- **Fast Recovery**  
+  In case of breach or corruption, redeploying a hardened RHEL image is faster and safer than patching live systems.  
+
+- **Audit and Compliance**  
+  Security teams can sign and verify system images, ensuring that only trusted, verified builds run in production.  
+
+#### Example Workflow
+
+1. Build a hardened RHEL image with Ansible + `bootc`:
+   ```bash
+   podman build -t registry.example.com/rhel-secure:latest .
+   bootc container save registry.example.com/rhel-secure:latest
+   ```
+
+2. Deploy the image across your RHEL fleet:
+   ```bash
+   bootc switch registry.example.com/rhel-secure:latest
+   ```
+
+3. Roll back instantly if needed:
+   ```bash
+   bootc rollback
+   ```
+
+By combining Zero Trust principles (least privilege, strict ingress/egress controls, SELinux, OpenSCAP compliance) with **immutable, image-mode RHEL systems**, you achieve a stronger defense posture and drastically reduce the blast radius of any breach.
