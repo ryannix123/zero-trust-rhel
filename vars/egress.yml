@@ -1,5 +1,4 @@
----
 allowed_domains:
-  - repo.redhat.com
+  - redhat.com
+  - quay.io
   - updates.redhat.com
-  - mycompany.internal

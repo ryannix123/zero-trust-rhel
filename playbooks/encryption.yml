@@ -1,0 +1,11 @@
+---
+# Optional Clevis+Tang encryption playbook
+- hosts: all
+  become: true
+  tasks:
+    - name: Ensure clevis and tang are installed
+      ansible.builtin.yum:
+        name:
+          - clevis
+          - tang
+        state: present
